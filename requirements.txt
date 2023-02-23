@@ -1,2 +1,7 @@
 # AWS libraries
 boto3
+botocore
+aws-secretsmanager-caching
+
+# Python libraries
+python-dotenv
