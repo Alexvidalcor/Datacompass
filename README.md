@@ -1,6 +1,4 @@
 
-### Kaggle Competitions
-
 <img src="https://raw.githubusercontent.com/Alexvidalcor/kagglecompetitions/main/input/Kaggle-logo.png" width="200" />
 
 _Predicting Student Academic Performance_
@@ -30,11 +28,6 @@ docker run -d -it --name kagglecompetitions_cont kagglecompetitions
 ```
 
 | :exclamation:  Check the [Wiki](https://github.com/Alexvidalcor/kagglecompetitions/wiki) for more info!  |
-
-
-## Wiki :closed_book:
-
-For detailed information, check the project [Wiki](https://github.com/Alexvidalcor/kagglecompetitions/wiki)
 
 
 ## Built with 🛠️
