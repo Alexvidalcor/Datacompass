@@ -39,3 +39,11 @@ ENV/
 env.bak/
 venv.bak/
 
+
+# CDK asset staging directory
+cdk.out
+cdk/cdk.context.json
+.cdk.staging
+cdk.out
+cdk.json
+
