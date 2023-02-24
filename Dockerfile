@@ -9,10 +9,6 @@ WORKDIR /home/application
 COPY ["requirements.txt", "main.py", "./"]
 COPY ["src", "./src"]
 
-# Set some environment vars
-ARG awsRegionDocker
-ENV AWS_DEFAULT_REGION=$awsRegionDocker
-
 # Install packages needed
 RUN apt update \
     && apt install -y \
@@ -21,4 +17,4 @@ RUN apt update \
         requirements.txt
 
 # Run the command that initializes the app
-CMD ["python3", "./main.py"]
+# CMD ["python3", "./main.py"]
