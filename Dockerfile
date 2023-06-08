@@ -9,6 +9,17 @@ WORKDIR /home/application
 COPY ["requirements.txt", "main.py", "./"]
 COPY ["src", "./src"]
 
+# Set some environment vars
+ARG awsRegionDocker
+ENV AWS_DEFAULT_REGION=$awsRegionDocker
+
+ARG envDeploy
+ENV ENVIRONMENT_DEPLOY=$envDeploy
+
+# Set custom logs (only errors and app info)
+RUN ln -sf /dev/stdout /home/application/src/logs/app.log \
+    && ln -sf /dev/stderr /home/application/src/logs/errors.log
+
 # Install packages needed
 RUN apt update \
     && apt install -y \
@@ -17,4 +28,4 @@ RUN apt update \
         requirements.txt
 
 # Run the command that initializes the app
-# CMD ["python3", "./main.py"]
+CMD ["python3", "./main.py"]

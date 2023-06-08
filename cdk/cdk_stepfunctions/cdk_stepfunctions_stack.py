@@ -8,7 +8,7 @@ from aws_cdk import (
 )
 
 
-class StepFunctionStack(Stack):
+class StepFunctionsStack(Stack):
     def __init__(self, app: App, id: str, **kwargs) -> None:
         super().__init__(app, id, **kwargs)
 

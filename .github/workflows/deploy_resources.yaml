@@ -1,0 +1,75 @@
+# Thisname: Deploy resources
+
+on:
+   workflow_dispatch:
+     inputs:
+       reusableStack:
+        type: choice
+        description: 'Always detect changes between layers'
+        options: 
+        - True
+        - False
+        required: true
+        default: False
+       deployAplication:
+        type: choice
+        description: 'Deploy the application when creating the infrastructure'
+        options: 
+        - True
+        - False
+        required: true
+        default: True
+
+jobs:
+
+  cdk-deploy-resources:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name }}
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3.5.2
+      
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "18.12.1"
+
+    - name: Configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Install dependencies
+      run: |
+        pip install -r cdk/cdk_requirements.txt
+        npm install -g aws-cdk
+        # cdk --version
+
+    - name: Show Github actions custom variables
+      run: |
+        echo "Reusable stacks: ${{ github.event.inputs.reusableStack }}"
+        echo "Deploy app: ${{ github.event.inputs.deployAplication }}"
+        echo "Environment chosen: ${{ github.ref_name }}"
+    
+    - name: Deploy Stack
+      run: cdk deploy --require-approval never --all
+      working-directory: ./cdk
+      env:
+        AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+        AWS_TAG_NAME: ${{ secrets.AWS_TAG_NAME }}
+        AWS_VPC_ID: ${{ secrets.AWS_VPC_ID }}
+        AWS_SG: ${{ secrets.AWS_SG }}
+        AWS_SG_PORTS: ${{ secrets.AWS_SG_PORTS }}
+        # ------
+        REUSABLE_STACK: ${{ github.event.inputs.reusableStack }}
+        # ------
+        ENVIRONMENT_DEPLOY: ${{ github.ref_name }}
+
+  cdk-deploy-application:
+    if: ${{ github.event.inputs.deployApplication }} == 'true'
+    needs: cdk-deploy-resources
+    uses: ./.github/workflows/update_application.yaml
+    secrets: inherit
