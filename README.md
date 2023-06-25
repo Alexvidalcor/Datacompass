@@ -1,5 +1,5 @@
 
-<img src="https://raw.githubusercontent.com/Alexvidalcor/kagglecompetitions/main/input/Kaggle-logo.png" width="200" />
+<img src="https://raw.githubusercontent.com/Alexvidalcor/Datacompass/main/input/Kaggle-logo.png" width="200" />
 
 _Repository that stores automation resources, infrastructure and more for Kaggle_
 
@@ -12,8 +12,8 @@ _Repository that stores automation resources, infrastructure and more for Kaggle
 _Manual Installation (terminal commands):_
 
 ```
-git clone https://github.com/Alexvidalcor/kagglecompetitions
-cd kagglecompetitions/
+git clone https://github.com/Alexvidalcor/Datacompass
+cd Datacompass/
 python3 src/installation/install.py
 ./src/installation/execute.sh
 ```
@@ -21,13 +21,13 @@ python3 src/installation/install.py
 _Installation using Docker (it is required to have Docker installed previously):_
 
 ```
-git clone https://github.com/Alexvidalcor/kagglecompetitions
-cd kagglecompetitions/
-docker build -t kagglecompetitions . 
-docker run -d -it --name kagglecompetitions_cont kagglecompetitions
+git clone https://github.com/Alexvidalcor/Datacompass
+cd Datacompass/
+docker build -t Datacompass . 
+docker run -d -it --name Datacompass_cont Datacompass
 ```
 
-| :exclamation:  Check the [Wiki](https://github.com/Alexvidalcor/kagglecompetitions/wiki) for more info!  |
+| :exclamation:  Check the [Wiki](https://github.com/Alexvidalcor/Datacompass/wiki) for more info!  |
 
 
 ## Built with 🛠️
