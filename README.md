@@ -1,7 +1,7 @@
 
 <img src="https://raw.githubusercontent.com/Alexvidalcor/Datacompass/main/input/Kaggle-logo.png" width="200" />
 
-_Repository that stores automation resources, infrastructure and more for Kaggle_
+_Repository that stores automation resources, infrastructure and more for data competitions based on Kaggle_
 
 
 ## Getting started 🚀
