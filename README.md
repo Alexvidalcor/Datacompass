@@ -27,12 +27,12 @@ docker build -t Datacompass .
 docker run -d -it --name Datacompass_cont Datacompass
 ```
 
-| :exclamation:  Check the [Wiki](https://github.com/Alexvidalcor/Datacompass/wiki) for more info!  |
-
+| :exclamation:  Check the [Wiki](https://github.com/Alexvidalcor/Datacompass/wiki) for more info! |
+|-----------------------------------------|
 
 ## Built with 🛠️
 
-* [Amazon Web Services](https://aws.amazon.com/) - AWS resources.
+* [Amazon Web Services](https://aws.amazon.com/) - AWS resources
 * [Kaggle Api](https://www.kaggle.com/docs/api) - Kaggle code support
 
 
