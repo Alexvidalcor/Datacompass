@@ -1,7 +1,7 @@
 
 <img src="https://raw.githubusercontent.com/Alexvidalcor/kagglecompetitions/main/input/Kaggle-logo.png" width="200" />
 
-_Predicting Student Academic Performance_
+_Repository that stores automation resources, infrastructure and more for Kaggle_
 
 
 ## Getting started 🚀
