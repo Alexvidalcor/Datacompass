@@ -1,5 +1,5 @@
 <br><kbd>
-<br><img src="https://raw.githubusercontent.com/Alexvidalcor/Datacompass/main/input/Readme-logo2.png" width="200" />
+<br><img src="https://raw.githubusercontent.com/Alexvidalcor/Datacompass/main/input/Readme-logo2.png" width="500" />
 </kbd><br>
 
 **CURRENT STATUS: IN DEVELOPMENT**
