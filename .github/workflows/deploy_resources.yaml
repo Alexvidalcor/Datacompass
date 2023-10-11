@@ -1,4 +1,4 @@
-# Thisname: Deploy resources
+name: Deploy resources
 
 on:
    workflow_dispatch:
@@ -37,8 +37,8 @@ jobs:
     - name: Configure aws credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Install dependencies
@@ -53,20 +53,18 @@ jobs:
         echo "Deploy app: ${{ github.event.inputs.deployAplication }}"
         echo "Environment chosen: ${{ github.ref_name }}"
     
-    - name: Deploy Stack
-      run: cdk deploy --require-approval never --all
+    - name: Deploy stacks
+      run: cdk deploy --app "python app.py" --require-approval never --all &> /dev/null
       working-directory: ./cdk
       env:
         AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
         AWS_TAG_NAME: ${{ secrets.AWS_TAG_NAME }}
-        AWS_VPC_ID: ${{ secrets.AWS_VPC_ID }}
-        AWS_SG: ${{ secrets.AWS_SG }}
-        AWS_SG_PORTS: ${{ secrets.AWS_SG_PORTS }}
         # ------
         REUSABLE_STACK: ${{ github.event.inputs.reusableStack }}
         # ------
         ENVIRONMENT_DEPLOY: ${{ github.ref_name }}
+
 
   cdk-deploy-application:
     if: ${{ github.event.inputs.deployApplication }} == 'true'
